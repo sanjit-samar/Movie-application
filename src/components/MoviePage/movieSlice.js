@@ -2,24 +2,27 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     movieList : [],
-    isMovieLoading: false
+    movie: {},
 }
 
-const moviePageSlice = createSlice({
+const moviesSlice = createSlice({
     name: 'movieList',
     initialState,
     reducers: {
-        getMovieListFetch(state){
-            state.isMovieLoading = true;
+        getMoviesFetch(state){           
         },
-        getMovieListSuccess(state, {payload}){
-            state.movieList = payload;
+        getMovies(name){
+            return name;
         },
-        getMovieListFailure(){
-           console.log('MovieListFailure')
+        //setMovies
+        getMoviesSuccess: (state, {payload}) =>{
+            state.movieList = payload;          
+        },
+        getMoviesFailure(state){
+           console.log('MovieListFailure');
         }
     }
 });
 
-export const {getMovieListFetch,getMovieListSuccess,getMovieListFailure} = moviePageSlice.actions;
-export default moviePageSlice.reducer;
+export const {getMovies,getMovieListFetch,getMovieListSuccess,getMovieListFailure} = moviesSlice.actions;
+export default moviesSlice.reducer;

@@ -1,14 +1,6 @@
 import axios from "axios";
-import {MOVIE_API_KEY} from "../../.env";
+// import {MOVIE_API_KEY} from "../../.env";
 
-const url = `http://www.omdbapi.com/?i=tt3896198&apikey=${MOVIE_API_KEY}`;
+const url = `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}`;
 
- const moviesApi = () => {
-    return axios.get({
-        method: 'get',
-        url: url,
-        
-    })
-}
-
-export default moviesApi;
+export const moviesApi = (movieName) => axios.get(`${url}&s=${movieName}`);
