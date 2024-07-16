@@ -9,8 +9,6 @@ const moviesSlice = createSlice({
     name: 'movieList',
     initialState,
     reducers: {
-        getMoviesFetch(state){           
-        },
         getMovies(name){
             return name;
         },
@@ -24,5 +22,5 @@ const moviesSlice = createSlice({
     }
 });
 
-export const {getMovies,getMovieListFetch,getMovieListSuccess,getMovieListFailure} = moviesSlice.actions;
+export const {getMovies,getMovieListFetch,getMoviesSuccess,getMovieListFailure} = moviesSlice.actions;
 export default moviesSlice.reducer;

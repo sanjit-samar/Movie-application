@@ -1,14 +1,14 @@
 import { takeLatest, call, put, fork } from "redux-saga/effects";
-import { getMovieListSuccess, getMovies } from "./movieSlice";
+import { getMoviesSuccess, getMovies } from "./movieSlice";
 import { moviesApi } from "../../services/moviesApi";
 
 
 function* onLoadMovies({payload}){
     try{
-        const moviesName = payload;
-        const response = yield call(moviesApi, moviesName);
+        const movieName = payload;
+        const response = yield call(()=>moviesApi(movieName));
         if(response.status === 200){
-            yield put(getMovieListSuccess(response.data))
+            yield put(getMoviesSuccess(response.data))
         }
     }catch(error){
         console.log(error)
