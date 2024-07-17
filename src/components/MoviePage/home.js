@@ -3,18 +3,19 @@ import { Search } from "../SearchBar/Search";
 import { useSelector } from "react-redux";
 
 const Home = () => {
+  const ListOfMovies = useSelector(
+    (state) => state?.rootReducers?.movies?.movieList?.Search
+  );
 
-    // const {movieList} = useSelector((state) => (state.movies));
-    // console.log(movieList);
-
-    return(
-        <>
-        <Search/>
-        {/* <div>{res.map(movie=> {
-            <div>movie.Year</div>
-        })}</div> */}
-        </>
-    )
-}
+  return (
+    <>
+      <Search />
+      {ListOfMovies &&
+        ListOfMovies.map((list) => {
+          return <div key={list.year}>{list.Title}</div>;
+        })}
+    </>
+  );
+};
 
 export default Home;
